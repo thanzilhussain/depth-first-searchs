@@ -88,10 +88,6 @@ F H <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 
-<hr>
-<h3>Result:</h3>
-<hr>
-<p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
 ## CODE:
 ```

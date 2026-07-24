@@ -93,3 +93,42 @@ F H <BR>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
 
+## CODE:
+```
+from collections import deque
+from collections import defaultdict
+def bfs(graph, start, visited, path):
+    queue = deque()
+    path.append(start)
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        # Visit all unvisited neighbors
+        for neighbour in graph[tmpnode]:
+            if not visited[neighbour]:
+                visited[neighbour] = True
+                queue.append(neighbour)
+                path.append(neighbour)
+    return path
+print("enter vertices and edges")
+graph = defaultdict(list)
+v, e = map(int, input().split())
+print("enter edges u v")
+for i in range(e):
+    u, v = input().split()
+    graph[u].append(v)
+    graph[v].append(u)  # assuming undirected graph
+start = input("Enter start node: ")
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph, start, visited, path)
+print("BFS Traversal Path:", traversedpath)
+```
+
+## OUTPUT:
+
+<img width="790" height="215" alt="image" src="https://github.com/user-attachments/assets/999d67f3-89b3-4f9f-a26d-c2ecd0f0be6e" />
+
+## RESULT:
+Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.

@@ -91,40 +91,40 @@ F H <BR>
 
 ## CODE:
 ```
-from collections import deque
 from collections import defaultdict
-def bfs(graph, start, visited, path):
-    queue = deque()
+
+def dfs(graph, start, visited, path):
     path.append(start)
-    queue.append(start)
     visited[start] = True
-    while len(queue) != 0:
-        tmpnode = queue.popleft()
-        # Visit all unvisited neighbors
-        for neighbour in graph[tmpnode]:
-            if not visited[neighbour]:
-                visited[neighbour] = True
-                queue.append(neighbour)
-                path.append(neighbour)
+    for neighbour in graph[start]:
+        # recursively visit unvisited neighbours
+        if not visited[neighbour]:
+            dfs(graph, neighbour, visited, path)
     return path
-print("enter vertices and edges")
+
+# create graph
 graph = defaultdict(list)
-v, e = map(int, input().split())
-print("enter edges u v")
+n, e = map(int, input("Enter number of vertices and edges: ").split())
+
 for i in range(e):
-    u, v = input().split()
+    u, v = input("Enter edge (u v): ").split()
     graph[u].append(v)
-    graph[v].append(u)  # assuming undirected graph
-start = input("Enter start node: ")
-path = []
+    graph[v].append(u)  # if the graph is undirected
+
+start = 'A'
 visited = defaultdict(bool)
-traversedpath = bfs(graph, start, visited, path)
-print("BFS Traversal Path:", traversedpath)
+path = []
+
+traversedpath = dfs(graph, start, visited, path)
+print("DFS Traversal Path:", traversedpath)
 ```
 
-## OUTPUT:
+## Output:
 
-<img width="790" height="215" alt="image" src="https://github.com/user-attachments/assets/999d67f3-89b3-4f9f-a26d-c2ecd0f0be6e" />
+<img width="925" height="248" alt="image" src="https://github.com/user-attachments/assets/a2f884fd-1c69-4d8b-ada0-e519b8040403" />
 
-## RESULT:
-Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.
+<hr>
+<h3>Result:</h3>
+<hr>
+<p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
+
